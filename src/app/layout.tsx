@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { GeistSans } from 'geist/font/sans';
-import { NavBar } from '@/components/Navbar';
-GeistSans;
+import { NavBar } from '@/components/navbar';
 
 export const metadata: Metadata = {
   title: 'Docmate',
