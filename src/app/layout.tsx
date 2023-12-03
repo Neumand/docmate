@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
-import './globals.css';
 import { GeistSans } from 'geist/font/sans';
 import { NavBar } from '@/components/navbar';
 import { Providers } from '@/components/providers';
+import './globals.css';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export const metadata: Metadata = {
   title: 'Docmate',

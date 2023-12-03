@@ -1,13 +1,10 @@
 import { MaxWidthWrapper } from '@/components/max-width-wrapper';
 import { buttonVariants } from '@/components/ui/button';
-import { useKindeAuth } from '@kinde-oss/kinde-auth-nextjs';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Home() {
-  const { user } = useKindeAuth();
-
   return (
     <>
       <MaxWidthWrapper className='mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center'>
