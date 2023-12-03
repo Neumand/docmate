@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { GeistSans } from 'geist/font/sans';
 import { NavBar } from '@/components/navbar';
+import { Providers } from '@/components/providers';
 
 export const metadata: Metadata = {
   title: 'Docmate',
@@ -15,10 +16,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className={`${GeistSans.variable}`}>
-      <body className='min-h-screen font-sans antialiased grainy'>
-        <NavBar />
-        {children}
-      </body>
+      <Providers>
+        <body className='min-h-screen font-sans antialiased grainy'>
+          <NavBar />
+          {children}
+        </body>
+      </Providers>
     </html>
   );
 }
