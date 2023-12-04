@@ -19,15 +19,15 @@ import { trpc } from '@/app/_trpc/client';
 export const DeleteButton = ({ fileId }: { fileId: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const utils = trpc.useUtils();
-  const {
-    data,
-    mutate: deleteFile,
-    isLoading,
-  } = trpc.deleteFile.useMutation({
+  const { mutate: deleteFile, isLoading } = trpc.deleteFile.useMutation({
     onSuccess: () => {
       utils.getUserFiles.invalidate();
     },
   });
+
+  async function handleDelete() {
+    deleteFile({ id: fileId });
+  }
 
   return (
     <AlertDialog open={isOpen} onOpenChange={(v) => setIsOpen(v)}>
@@ -50,7 +50,7 @@ export const DeleteButton = ({ fileId }: { fileId: string }) => {
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             className={buttonVariants({ variant: 'destructive' })}
-            onClick={() => deleteFile({ id: fileId })}
+            onClick={handleDelete}
           >
             {isLoading ? (
               <Loader2 className='animate-spin w-8 h-8' />

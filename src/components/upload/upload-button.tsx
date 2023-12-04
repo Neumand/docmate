@@ -1,9 +1,9 @@
 'use client';
 
-import { UploadIcon } from 'lucide-react';
-import { Button } from './ui/button';
 import { useState } from 'react';
-import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
+import { Button } from '../ui/button';
+import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog';
+import { UploadDropzone } from './upload-dropzone';
 
 export const UploadButton = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -14,7 +14,9 @@ export const UploadButton = () => {
         <Button>Upload PDF</Button>
       </DialogTrigger>
 
-      <DialogContent>Example Content</DialogContent>
+      <DialogContent>
+        <UploadDropzone />
+      </DialogContent>
     </Dialog>
   );
 };

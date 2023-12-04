@@ -1,7 +1,7 @@
 'use client';
 
 import { trpc } from '@/app/_trpc/client';
-import { UploadButton } from './upload-button';
+import { UploadButton } from './upload/upload-button';
 import { Ghost, MessageSquare, PlusIcon, Trash } from 'lucide-react';
 import Skeleton from 'react-loading-skeleton';
 import Link from 'next/link';

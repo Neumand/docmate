@@ -3,6 +3,7 @@ import { privateProcedure, publicProcedure, router } from './trpc';
 import { TRPCError } from '@trpc/server';
 import { db } from '@/db';
 import { z } from 'zod';
+import { utapi } from '@/server/uploadthing';
 
 export const appRouter = router({
   authCallback: publicProcedure.query(async () => {
@@ -43,6 +44,27 @@ export const appRouter = router({
     });
   }),
 
+  getFile: privateProcedure
+    .input(z.object({ key: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      const { userId } = ctx;
+
+      const file = await db.file.findFirst({
+        where: {
+          id: input.key,
+          userId,
+        },
+      });
+
+      if (!file) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+        });
+      }
+
+      return file;
+    }),
+
   deleteFile: privateProcedure
     .input(z.object({ id: z.string() }))
     .mutation(async ({ ctx, input }) => {
@@ -67,6 +89,8 @@ export const appRouter = router({
           userId,
         },
       });
+
+      await utapi.deleteFiles(file.key);
 
       return {
         success: true,
