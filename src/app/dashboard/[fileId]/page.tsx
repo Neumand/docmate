@@ -1,8 +1,8 @@
-import { ChatWrapper } from '@/components/chat-wrapper';
-import { PDFRenderer } from '@/components/pdf-renderer';
+import { ChatWrapper } from '@/components/chat/chat-wrapper';
 import { db } from '@/db';
 import { fetchUser } from '@/helpers/get-user';
 import { notFound } from 'next/navigation';
+import { PDFRenderer } from '@/components/pdf-renderer';
 
 interface PageProps {
   params: {
@@ -36,7 +36,7 @@ export default async function Page({ params }: PageProps) {
         </div>
 
         <div className='shrink-0 flex-[0.75] border-t border-gray-200 lg:w-96 lg:border-l lg:border-t-0'>
-          <ChatWrapper />
+          <ChatWrapper fileId={file.id} />
         </div>
       </div>
     </div>
