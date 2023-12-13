@@ -12,6 +12,6 @@ It's a SaaS portfolio project that I built to learn some new technologies and to
 
 ## Screenshots
 
-![Home page](./public/home-page.png)
+![Home page](public/dashboard-preview.jpg)
 
-![Chatting with documents](./public/feature.png)
+![Chatting with documents](public/feature.png)
